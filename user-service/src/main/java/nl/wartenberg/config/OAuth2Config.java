@@ -13,6 +13,8 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
 // curl -u acme:acmesecret "http://localhost:8002/uaa/oauth/token?grant_type=password&username=user&password=password" -X POST -H "Content-Type:application/x-www-form-urlencoded" -v
+// curl "acme:acmesecret@localhost:8002/uaa/oauth/token?grant_type=password&username=user&password=password" -X POST -H "Content-Type:application/x-www-form-urlencoded" -v
+// curl "http://localhost:8002/uaa/v1/me" -H "Authorization: Bearer 123d298b-a6eb-4cd7-839c-f425bfa62e65"
 @Configuration
 @EnableAuthorizationServer
 public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
