@@ -1,5 +1,7 @@
 package nl.wartenberg.data;
 
+import java.sql.Date;
+
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 
@@ -7,38 +9,32 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-/**
- * An entity base class that is used for auditing purposes bounded context.
- *
- * @author Kenny Bastani
- * @author Josh Long
- */
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
 
 	@CreatedDate
-	private Long createdAt;
+	private Date createdAt;
 
 	@LastModifiedDate
-	private Long lastModified;
+	private Date lastModified;
 
 	public BaseEntity() {
 	}
 
-	public Long getCreatedAt() {
+	public Date getCreatedAt() {
 		return createdAt;
 	}
 
-	public Long getLastModified() {
+	public Date getLastModified() {
 		return lastModified;
 	}
 
-	public void setCreatedAt(Long createdAt) {
+	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public void setLastModified(Long lastModified) {
+	public void setLastModified(Date lastModified) {
 		this.lastModified = lastModified;
 	}
 
