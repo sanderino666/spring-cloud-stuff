@@ -9,6 +9,8 @@ eureka:
   instance:
     prefer-ip-address: true
     non-secure-port: 8002
+    statusPageUrlPath: ${server.contextPath}/info
+    healthCheckUrlPath: ${server.contextPath}/health
   client:
     registerWithEureka: true
     fetchRegistry: false

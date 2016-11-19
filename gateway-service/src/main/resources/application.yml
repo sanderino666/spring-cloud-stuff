@@ -9,6 +9,7 @@ security:
   oauth2:
     resource:
       userInfoUri: http://localhost:8002/uaa/user
+  ignored: /info, /health
 eureka:
   instance:
     prefer-ip-address: true
