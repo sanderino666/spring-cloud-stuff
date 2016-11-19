@@ -1,0 +1,28 @@
+server:
+  port: 8004    
+spring:
+  data:
+    mongodb:
+      port: 0 #embedded mongo with locate random free port
+  mvc:
+    date-format: "YYYY-MM-dd"
+  jackson:
+    date-format: "YYYY-MM-dd"
+    serialization:
+      write-dates-as-timestamps: true
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8002/uaa/user
+    client:
+      client-id: acme
+      client-secret: acmesecret
+eureka:
+  instance:
+    prefer-ip-address: true
+    non-secure-port: 8004
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
