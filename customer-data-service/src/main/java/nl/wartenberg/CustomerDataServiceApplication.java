@@ -5,9 +5,13 @@ import java.io.IOException;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 import de.flapdoodle.embed.mongo.config.IMongodConfig;
 import de.flapdoodle.embed.mongo.config.MongoCmdOptionsBuilder;
@@ -18,9 +22,10 @@ import nl.wartenberg.config.DatabaseInitializer;
 @SpringBootApplication
 @EnableMongoRepositories
 @EnableMongoAuditing
-// @EnableEurekaClient
-// @EnableResourceServer
-// @EnableOAuth2Client
+@EnableEurekaClient
+@EnableResourceServer
+@EnableOAuth2Client
+@EnableHystrix
 public class CustomerDataServiceApplication {
 
 	public static void main(String[] args) {

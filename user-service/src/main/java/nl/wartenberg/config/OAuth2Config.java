@@ -48,8 +48,9 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 		clients.inMemory() //
 				.withClient(clientId) //
 				.secret(secret) //
+				.authorities("USER", "AGGREGATE") //
 				.authorizedGrantTypes("authorization_code", "refresh_token", "password") //
-				.scopes("openid");
+				.scopes("myApp");
 	}
 
 	@Bean

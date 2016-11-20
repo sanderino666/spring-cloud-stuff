@@ -32,12 +32,12 @@ public class DatabaseInitializer {
 		final List<Aggregate> aggregates = new ArrayList<>();
 		final Random rand = new Random();
 
-		final int max_zaak_records = 10000;
-		final int max_aanvraag_records = 10000;
-		final int max_beoordeling_records = 10000;
+		final int max_zaak_records = 50000;
+		final int max_aanvraag_records = 50000;
+		final int max_beoordeling_records = 50000;
 
 		// Create aggregates of type 'Zaak'
-		LOG.debug("Start creating " + max_zaak_records + " Zaak aggregates");
+		LOG.info("Start creating " + max_zaak_records + " Zaak aggregates");
 		for (int zaak = 0; zaak < max_zaak_records; zaak++) {
 			final Map<String, String> metadata = new HashMap<>();
 			metadata.put("zaak1", String.valueOf(rand.nextInt(100)));
@@ -51,7 +51,7 @@ public class DatabaseInitializer {
 		}
 
 		// Create aggregates of type 'Aanvraag'
-		LOG.debug("Start creating " + max_aanvraag_records + " Aanvraag aggregates");
+		LOG.info("Start creating " + max_aanvraag_records + " Aanvraag aggregates");
 		for (int zaak = 0; zaak < max_aanvraag_records; zaak++) {
 			final Map<String, String> metadata = new HashMap<>();
 			metadata.put("aanvraag1", String.valueOf(rand.nextInt(100)));
@@ -64,8 +64,8 @@ public class DatabaseInitializer {
 			aggregates.add(aggregate);
 		}
 
-		// Create 1000 aggregates of type 'Beoordeling'
-		LOG.debug("Start creating " + max_beoordeling_records + " Beoordeling aggregates");
+		// Create aggregates of type 'Beoordeling'
+		LOG.info("Start creating " + max_beoordeling_records + " Beoordeling aggregates");
 		for (int zaak = 0; zaak < max_beoordeling_records; zaak++) {
 			final Map<String, String> metadata = new HashMap<>();
 			metadata.put("beoordeling1", String.valueOf(rand.nextInt(100)));
@@ -78,6 +78,8 @@ public class DatabaseInitializer {
 			aggregates.add(aggregate);
 		}
 
+		LOG.info("Saving all aggregates");
 		aggregateRepository.save(aggregates);
+		LOG.info("All aggregated are saved");
 	}
 }
