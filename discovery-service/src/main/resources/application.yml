@@ -1,8 +1,18 @@
 server:
   port: 8761
+  
 eureka:
+  instance:
+    prefer-ip-address: true
+    statusPageUrlPath: /manage/info
+    healthCheckUrlPath: /manage/health
+    metadata-map:
+      management.context-path: ${management.context-path}
   client:
     registerWithEureka: true
     fetchRegistry: false
   server:
-    waitTimeInMsWhenSyncEmpty: 0
+    waitTimeInMsWhenSyncEmpty: 0    
+    
+management:
+  context-path: /manage

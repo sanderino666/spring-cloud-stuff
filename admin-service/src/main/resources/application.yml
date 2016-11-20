@@ -1,17 +1,25 @@
 server:
   port: 8003  
   contextPath: /admin
+  
 eureka:
   instance:
-    statusPageUrlPath: ${server.contextPath}/info
-    healthCheckUrlPath: ${server.contextPath}/health
+    prefer-ip-address: true
+    statusPageUrlPath: ${server.contextPath}/manage/info
+    healthCheckUrlPath: ${server.contextPath}/manage/health
     leaseRenewalIntervalInSeconds: 10
+    metadata-map:
+      management.context-path: ${server.contextPath}${management.context-path}
   client:
     registryFetchIntervalSeconds: 5
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+      
 spring:
   boot:
     admin:
       routes:
-        endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,activiti
+        endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,heapdump,activiti
+              
+management:
+  context-path: /manage

@@ -14,14 +14,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	public void configure(HttpSecurity http) throws Exception {
 		http //
 				.authorizeRequests() //
-				.antMatchers("/console/**").permitAll() //
-				.antMatchers("/manage/**").permitAll() //
+				.antMatchers("/info/**").permitAll() //
+				.antMatchers("/health/**").permitAll() //
 				.anyRequest() //
 				.authenticated();
-
-		// add this line to use H2 web console
-		http.headers().frameOptions().sameOrigin();
-
 	}
 
 	@Bean

@@ -10,10 +10,15 @@ The default user is John Doe. Username = user and password = password.
 3. Retrieve profile: curl "http://localhost:9999/user/uaa/v1/me" -X GET -H "Authorization: Bearer <access_token>"
 4: Retrieve userInfo: curl "http://localhost:9999/user/uaa/user" -X GET -H "Authorization: Bearer <access_token>"
 
+## Using the customer-data-service
+
+The customer-data service uses an embedded MongoDB server which will be downloaded when the service is started for the first time. Also, at startup, the database will be filled with 150000 records. To run this service locally please pass -Xmx2048m as a VM argument.
+
 ## Using the admin-service (Spring Boot Admin Server)
 
-Go to http://localhost:8003 to see the Spring Boot Admin Server.
+Go to http://localhost:8003/admin to see the Spring Boot Admin Server.
 
 ## Using the discovery-service (Spring Cloud Eureka)
 
 Go to http://localhost:9999 to see the Spring Boot Eureka Server
+

@@ -1,21 +1,25 @@
 server:
   port: 8002
   contextPath: /uaa
+  
 security:
   user:
     password: password
   enable-csrf: false
+  
 eureka:
   instance:
     prefer-ip-address: true
-    non-secure-port: 8002
-    statusPageUrlPath: ${server.contextPath}/info
-    healthCheckUrlPath: ${server.contextPath}/health
+    statusPageUrlPath: ${server.contextPath}/manage/info
+    healthCheckUrlPath: ${server.contextPath}/manage/health
+    metadata-map:
+      management.context-path: ${server.contextPath}${management.context-path}
   client:
     registerWithEureka: true
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+      
 spring:
   jpa:
     database: h2
@@ -32,3 +36,6 @@ spring:
     console:
       enabled: true
       path: /console
+      
+management:
+  context-path: /manage

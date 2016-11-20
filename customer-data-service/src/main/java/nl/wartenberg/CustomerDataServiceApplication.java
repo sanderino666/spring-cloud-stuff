@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 import de.flapdoodle.embed.mongo.config.IMongodConfig;
 import de.flapdoodle.embed.mongo.config.MongoCmdOptionsBuilder;
@@ -23,7 +22,6 @@ import nl.wartenberg.config.DatabaseInitializer;
 @EnableMongoRepositories
 @EnableMongoAuditing
 @EnableEurekaClient
-@EnableResourceServer
 @EnableOAuth2Client
 @EnableHystrix
 public class CustomerDataServiceApplication {
