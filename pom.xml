@@ -23,6 +23,7 @@
 		<module>gateway-service</module>
 		<module>admin-service</module>
 		<module>customer-data-service</module>
+		<module>search-service</module>
 	</modules>
 
 	<properties>
@@ -66,8 +67,13 @@
 				<artifactId>de.flapdoodle.embed.mongo</artifactId>
 				<version>1.50.5</version>
 			</dependency>
+			<dependency>
+				<groupId>net.java.dev.jna</groupId>
+				<artifactId>jna</artifactId>
+				<version>4.2.2</version>
+			</dependency>
 		</dependencies>
-	</dependencyManagement>	
+	</dependencyManagement>
 
 	<repositories>
 		<repository>

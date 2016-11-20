@@ -1,0 +1,38 @@
+server:
+  port: 8005  
+  
+spring:
+  data:
+    elasticsearch:
+      properties:
+        path:  
+          home: target/es  
+        http:
+          enabled: false
+        node:
+          local: true
+     
+#security:
+#  oauth2:
+#    resource:
+#      userInfoUri: http://localhost:8002/uaa/user
+#    client:
+#      client-id: acme
+#      client-secret: acmesecret
+#  ignored: /manage/**
+     
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#    statusPageUrlPath: /manage/info
+#    healthCheckUrlPath: /manage/health
+#    metadata-map:
+#      management.context-path: ${management.context-path}
+#  client:
+#    registerWithEureka: true
+#    fetchRegistry: false
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
+      
+management:
+  context-path: /manage
