@@ -8,6 +8,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.mongodb.BasicDBObject;
+
 import nl.wartenberg.domain.BaseEntity;
 
 @Document
@@ -35,12 +37,12 @@ public class Aggregate extends BaseEntity {
 	@Indexed
 	private boolean latest = true;
 
-	private String data;
+	private BasicDBObject data;
 
 	private Map<String, String> metadata = new HashMap<>();
 
 	public Aggregate(long aggregateId, String applicationId, String type, String createdBy, String lastModifiedBy,
-			long version, boolean latest, String data, Map<String, String> metadata) {
+			long version, boolean latest, BasicDBObject data, Map<String, String> metadata) {
 		super();
 		this.aggregateId = aggregateId;
 		this.applicationId = applicationId;
@@ -117,11 +119,11 @@ public class Aggregate extends BaseEntity {
 		this.latest = latest;
 	}
 
-	public String getData() {
+	public BasicDBObject getData() {
 		return data;
 	}
 
-	public void setData(String data) {
+	public void setData(BasicDBObject data) {
 		this.data = data;
 	}
 

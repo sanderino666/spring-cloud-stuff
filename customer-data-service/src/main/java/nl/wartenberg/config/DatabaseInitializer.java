@@ -11,6 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.util.JSON;
+
 import nl.wartenberg.aggregate.Aggregate;
 import nl.wartenberg.aggregate.AggregateRepository;
 
@@ -45,7 +48,7 @@ public class DatabaseInitializer {
 			metadata.put("zaak3", String.valueOf(rand.nextInt(100)));
 
 			final Aggregate aggregate = new Aggregate(zaak, "export-demo", "Zaak", "swartenberg", null, 1L, true,
-					"<xml><data />", metadata);
+					createData(), metadata);
 
 			aggregates.add(aggregate);
 		}
@@ -59,7 +62,7 @@ public class DatabaseInitializer {
 			metadata.put("aanvraag3", String.valueOf(rand.nextInt(100)));
 
 			final Aggregate aggregate = new Aggregate(zaak, "export-demo", "Aanvraag", "swartenberg", null, 1L, true,
-					"<xml><data />", metadata);
+					createData(), metadata);
 
 			aggregates.add(aggregate);
 		}
@@ -73,7 +76,7 @@ public class DatabaseInitializer {
 			metadata.put("beoordeling3", String.valueOf(rand.nextInt(100)));
 
 			final Aggregate aggregate = new Aggregate(zaak, "export-demo", "Beoordeling", "swartenberg", null, 1L, true,
-					"<xml><data />", metadata);
+					createData(), metadata);
 
 			aggregates.add(aggregate);
 		}
@@ -81,5 +84,20 @@ public class DatabaseInitializer {
 		LOG.info("Saving all aggregates");
 		aggregateRepository.save(aggregates);
 		LOG.info("All aggregated are saved");
+	}
+
+	private BasicDBObject createData() {
+		final Random rand = new Random();
+
+		final String[] names = new String[5];
+		names[0] = "Sander Wartenberg";
+		names[1] = "Paul Stalenhoef";
+		names[2] = "Onno de Groote";
+		names[3] = "Maarten Damen";
+		names[4] = "Raoul de Haard";
+
+		final String data = "{'name':'" + names[rand.nextInt(5)] + "', 'age':'" + rand.nextInt(100) + "'}";
+
+		return (BasicDBObject) JSON.parse(data);
 	}
 }

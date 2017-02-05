@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
@@ -24,6 +25,7 @@ import nl.wartenberg.config.DatabaseInitializer;
 @EnableEurekaClient
 @EnableOAuth2Client
 @EnableHystrix
+@ComponentScan("nl.wartenberg")
 public class CustomerDataServiceApplication {
 
 	public static void main(String[] args) {

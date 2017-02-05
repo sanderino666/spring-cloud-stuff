@@ -60,9 +60,9 @@
 		<dependency>
 			<groupId>org.jolokia</groupId>
 			<artifactId>jolokia-core</artifactId>
-		</dependency>
+		</dependency>		
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -75,7 +75,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin>			
 		</plugins>
 	</build>
 </project>
