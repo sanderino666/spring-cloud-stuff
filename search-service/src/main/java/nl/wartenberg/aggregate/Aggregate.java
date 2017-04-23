@@ -3,32 +3,23 @@ package nl.wartenberg.aggregate;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
-import com.mongodb.BasicDBObject;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import nl.wartenberg.domain.BaseEntity;
 
-@Document
+@Document(indexName = "aggregate", type = "aggregate", shards = 1, replicas = 0, refreshInterval = "-1")
 public class Aggregate extends BaseEntity {
 
 	private static final long serialVersionUID = 3568001162144256916L;
 
 	@Id
-	@JsonSerialize(using = ToStringSerializer.class)
-	private ObjectId objectId;
+	private String objectId;
 
 	private long aggregateId;
 
-	@Indexed
 	private String applicationId;
 
-	@Indexed
 	private String type;
 
 	private String createdBy;
@@ -37,16 +28,18 @@ public class Aggregate extends BaseEntity {
 
 	private long version = 1;
 
-	@Indexed
 	private boolean latest = true;
 
-	@JsonSerialize(using = ToStringSerializer.class)
-	private BasicDBObject data;
+	private String data;
 
 	private Map<String, String> metadata = new HashMap<>();
 
+	public Aggregate() {
+		super();
+	}
+
 	public Aggregate(long aggregateId, String applicationId, String type, String createdBy, String lastModifiedBy,
-			long version, boolean latest, BasicDBObject data, Map<String, String> metadata) {
+			long version, boolean latest, String data, Map<String, String> metadata) {
 		super();
 		this.aggregateId = aggregateId;
 		this.applicationId = applicationId;
@@ -59,11 +52,11 @@ public class Aggregate extends BaseEntity {
 		this.metadata = metadata;
 	}
 
-	public ObjectId getObjectId() {
+	public String getObjectId() {
 		return objectId;
 	}
 
-	public void setObjectId(ObjectId objectId) {
+	public void setObjectId(String objectId) {
 		this.objectId = objectId;
 	}
 
@@ -123,11 +116,11 @@ public class Aggregate extends BaseEntity {
 		this.latest = latest;
 	}
 
-	public BasicDBObject getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(BasicDBObject data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 

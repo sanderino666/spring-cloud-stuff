@@ -4,13 +4,23 @@ server:
 spring:
   data:
     mongodb:
-      port: 0 #embedded mongo with locate random free port
+      port: 27017 #embedded mongo with locate random free port      
   mvc:
     date-format: "YYYY-MM-dd"
   jackson:
     date-format: "YYYY-MM-dd"
     serialization:
       write-dates-as-timestamps: true
+  cloud:
+    stream: 
+      kafka:
+        binder:
+          zkNodes: localhost
+          brokers: localhost
+      bindings:
+        output:
+          destination: aggregateTopic
+          content-type: application/json
       
 security:
   oauth2:

@@ -11,6 +11,26 @@ spring:
           enabled: false
         node:
           local: true
+  cloud:
+    stream:
+      instanceCount: 1
+      instanceIndex: 0
+      kafka:
+        binder:
+          autoAddPartitions: true
+          zkNodes: localhost
+          brokers: localhost
+        bindings:
+          input:
+            consumer:
+              resetOffsets: false
+              startOffset: latest
+              autoRebalanceEnabled: true
+      bindings:
+        input:
+          group: aggregateGroup
+          destination: aggregateTopic
+          content-type: application/json     
      
 #security:
 #  oauth2:

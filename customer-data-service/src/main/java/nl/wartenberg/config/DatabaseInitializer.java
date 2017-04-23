@@ -35,9 +35,9 @@ public class DatabaseInitializer {
 		final List<Aggregate> aggregates = new ArrayList<>();
 		final Random rand = new Random();
 
-		final int max_zaak_records = 50000;
-		final int max_aanvraag_records = 50000;
-		final int max_beoordeling_records = 50000;
+		final int max_zaak_records = 50; // 500000
+		final int max_aanvraag_records = 50;
+		final int max_beoordeling_records = 50;
 
 		// Create aggregates of type 'Zaak'
 		LOG.info("Start creating " + max_zaak_records + " Zaak aggregates");
@@ -89,14 +89,19 @@ public class DatabaseInitializer {
 	private BasicDBObject createData() {
 		final Random rand = new Random();
 
-		final String[] names = new String[5];
+		final String[] names = new String[10];
 		names[0] = "Sander Wartenberg";
 		names[1] = "Paul Stalenhoef";
 		names[2] = "Onno de Groote";
 		names[3] = "Maarten Damen";
 		names[4] = "Raoul de Haard";
+		names[5] = "Martijn van Tilburg";
+		names[6] = "Rick Arts";
+		names[7] = "Maarten Schadd";
+		names[8] = "Geert Graat";
+		names[9] = "Martijn van der Blom";
 
-		final String data = "{'name':'" + names[rand.nextInt(5)] + "', 'age':'" + rand.nextInt(100) + "'}";
+		final String data = "{'name':'" + names[rand.nextInt(10)] + "', 'age':'" + rand.nextInt(1000) + "'}";
 
 		return (BasicDBObject) JSON.parse(data);
 	}
