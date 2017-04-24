@@ -8,7 +8,7 @@ spring:
         path:  
           home: target/es  
         http:
-          enabled: false
+          enabled: true
         node:
           local: true
   cloud:

@@ -2,11 +2,8 @@ package nl.wartenberg.listener;
 
 import java.util.Date;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventListener;
-import org.springframework.data.mongodb.core.mapping.event.AfterDeleteEvent;
 import org.springframework.data.mongodb.core.mapping.event.AfterSaveEvent;
 import org.springframework.data.mongodb.core.mapping.event.BeforeSaveEvent;
 import org.springframework.integration.support.MessageBuilder;
@@ -17,8 +14,6 @@ import nl.wartenberg.domain.BaseEntity;
 
 @Component
 public class SaveAggregateListener extends AbstractMongoEventListener<BaseEntity> {
-
-	private static final Logger LOGGER = LoggerFactory.getLogger(SaveAggregateListener.class);
 
 	private final MessageChannel output;
 
@@ -45,12 +40,6 @@ public class SaveAggregateListener extends AbstractMongoEventListener<BaseEntity
 
 	@Override
 	public void onAfterSave(AfterSaveEvent<BaseEntity> event) {
-		LOGGER.info("onAfterSave {}", event);
 		output.send(MessageBuilder.withPayload(event.getSource()).build());
-	}
-
-	@Override
-	public void onAfterDelete(AfterDeleteEvent<BaseEntity> event) {
-		LOGGER.info("onAfterDelete {}", event);
 	}
 }

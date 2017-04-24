@@ -35,9 +35,9 @@ public class DatabaseInitializer {
 		final List<Aggregate> aggregates = new ArrayList<>();
 		final Random rand = new Random();
 
-		final int max_zaak_records = 50; // 500000
-		final int max_aanvraag_records = 50;
-		final int max_beoordeling_records = 50;
+		final int max_zaak_records = 5000; // 500000
+		final int max_aanvraag_records = 5000;
+		final int max_beoordeling_records = 5000;
 
 		// Create aggregates of type 'Zaak'
 		LOG.info("Start creating " + max_zaak_records + " Zaak aggregates");
